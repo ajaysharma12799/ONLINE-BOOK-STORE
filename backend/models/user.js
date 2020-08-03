@@ -1,9 +1,9 @@
 /* 
     This Model is for User
 */
-const uuidv1 = require('uuid/v1');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
+const { v1: uuidv1 } = require('uuid');
 
 const userSchema = new mongoose.Schema({ 
     firstName: {
@@ -57,7 +57,7 @@ userSchema.virtual('password')
     return this._password;
 } );
 
-userSchema.method = {
+userSchema.methods = {
     authenciate: function(plainPassword) {
         return this.securePassword(plainPassword) === this.encryptedPassword;
     },

@@ -3,7 +3,9 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookieparser');
+const cookieParser = require('cookie-parser');
+
+const authRoute = require('./routes/auth');
 
 const app = express();
 const PORT = 3200;
@@ -25,6 +27,9 @@ mongoose.connect(process.env.DATABASEURL, {
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
+
+// Custom Middleware
+app.use('/api', authRoute);
 
 // Custom Middleware
 app.get('/', (req, res) => {
