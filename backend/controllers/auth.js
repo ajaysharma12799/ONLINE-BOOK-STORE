@@ -52,3 +52,27 @@ exports.signout = (req, res) => {
     res.clearCookie('token'); // Clearing Cookie on User Signout
     res.json({ msg: 'User Signout Successfully' })
 }
+
+/* 
+    Custom Authentication Middleware and Protected Route Middleware
+*/
+
+exports.isSignedIN = expressJWT({ // Protected Route Middleware for Checking Whether User is Signedin or not
+    secret: process.env.SECRET,
+    userProperty: 'auth'
+})
+
+exports.isAuthenticated = (req, res, next) => { // Auth Middleware for Checking Whether SignedIN User is Same as who Registered in Application
+    let Checker = (req.profile && req.auth) && (req.profile._id == req.auth._id);
+    // TODO: Proper Documentation of This Method is Required
+    if( !Checker ) {
+        return res.statis(403).json({ error: 'Access Denied Failed to Authenticate' });
+    }
+}
+
+exports.isAdmin = (req, res, next) => { // Auth Middleware for Checking Whether Registered User is Admin or Not
+    if(req.profile.role === "normal") {
+        res.status(403).json({ error: 'Access Denied You are Not Admin' })
+    }
+    next();
+}

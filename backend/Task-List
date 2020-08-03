@@ -1,9 +1,3 @@
-add protected route
-
-    isaignedin
-    isauthenticated
-    isadmin
-
 add models
     order-model
 
