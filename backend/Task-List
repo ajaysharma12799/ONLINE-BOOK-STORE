@@ -5,3 +5,6 @@ add controllers
     user controller
     product controller
     order controller
+
+
+NOTE:- if we are doing any admin work for auth then we have to pass auth-token with Bearer as prefix in headers part

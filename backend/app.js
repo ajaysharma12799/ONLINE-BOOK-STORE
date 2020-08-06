@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const authRoute = require('./routes/auth');
+const userRoute = require('./routes/user');
+const categoryRoute = require('./routes/category');
 
 const app = express();
 const PORT = 3200;
@@ -30,6 +32,8 @@ app.use(cors());
 
 // Custom Middleware
 app.use('/api', authRoute);
+app.use('/api', userRoute);
+app.use('/api', categoryRoute);
 
 // Custom Middleware
 app.get('/', (req, res) => {

@@ -1,7 +1,7 @@
 const Category = require('../models/category');
 
 exports.getCategoryByID = (req, res, next, id) => { // Function to find Category by using ID
-    category.findById({id}).exec( (error, category) => {
+    Category.findById(id).exec( (error, category) => {
         if(error) {
             return res.status(400).json({ error: 'Failed to Find Category' })
         }
