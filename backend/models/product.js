@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { objectId } = mongoose.Schema; // We will use this objectId to indicate that this product is associated with that document or product specific category
+const { ObjectId } = mongoose.Schema; // We will use this objectId to indicate that this product is associated with that document or product specific category
 
 const productSchema = new mongoose.Schema({
     name: {
@@ -22,7 +22,7 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
     category: {
-        type: objectId,
+        type: ObjectId,
         ref: 'Category', // Same name as we export Category Model
         required: true
     },

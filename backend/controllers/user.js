@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Order = require('../models/order');
 
 exports.getUserByID = (req, res, next, id) => { // Function to find User by ID
     User.findById(id).exec( (error, user) => {
@@ -31,3 +32,19 @@ exports.updateUser = (req, res) => { // Function to Update User
         }
     )
 }
+
+exports.userPurchasedList = (req, res) => { // Function for Storing Order in User-Purchase-List
+    Order.find({ user: req.profile._id })
+    .populate('user', '_id name')
+    /* 
+        Populate is used to fill specific field in document using other collection
+        NOTE:- In this " USERPURCHASELIST " function we will fetch specific orders present in particular user account
+    */
+    .exec( (error, order) => {
+        if(error) {
+            return res.status(400).json({ error: 'No Order Present in This Account' });
+        }
+        res.status(200).json(order);
+    } )
+}
+

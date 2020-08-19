@@ -8,9 +8,10 @@ const cookieParser = require('cookie-parser');
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user');
 const categoryRoute = require('./routes/category');
+const productRoute = require('./routes/product');
 
 const app = express();
-const PORT = 3200;
+const PORT = process.env.PORT || 3200;
 
 // Database Connection
 mongoose.connect(process.env.DATABASEURL, {
@@ -34,6 +35,7 @@ app.use(cors());
 app.use('/api', authRoute);
 app.use('/api', userRoute);
 app.use('/api', categoryRoute);
+app.use('/api', productRoute);
 
 // Custom Middleware
 app.get('/', (req, res) => {
