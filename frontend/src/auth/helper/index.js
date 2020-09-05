@@ -45,7 +45,7 @@ export const Authenticate = (data, next) => { /*
     }
 }
 
-export const Signout = (next) => {
+export const SignoutFrontEnd = (next) => {
     if(typeof Window !== 'undefined') {
         localStorage.removeItem('jwt');
         next();

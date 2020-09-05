@@ -22,24 +22,24 @@ const Signup = () => {
     }
 
     const successMessage = () => (
-        <div class="container alert alert-success alert-dismissible fade show"
+        <div className="container alert alert-success alert-dismissible fade show"
             style={ { display: success ? '' : 'none' } }
             role="alert"
         >
             Account Created Successfully, Please <Link to='/signin'> Login Here </Link>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
         </div>
     )
 
     const errorMessage = () => (
-        <div class="container alert alert-warning alert-dismissible fade show"
+        <div className="container alert alert-warning alert-dismissible fade show"
             style={ { display: error ? '' : 'none' } }
             role="alert"
         >
             { error }
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
         </div>

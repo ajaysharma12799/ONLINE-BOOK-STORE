@@ -1,10 +1,12 @@
 import React from 'react'
 
+import Base from './../core/Base';
+
 const adminDashboard = () => {
     return (
-        <div>
-            <h1>Admin Dashboard Page</h1>
-        </div>
+        <Base title='Welcome to AdminDashboard' description='An amazing Place to Buy Books'>
+        
+        </Base>
     )
 }
 
