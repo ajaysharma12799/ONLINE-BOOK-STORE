@@ -43,8 +43,8 @@ exports.signin = (req, res) => {
 
         console.log(` Send Response to Frontend : ${user.firstName} + ${user.lastName} + ${user.email} `);
 
-        const { firstName, lastName, email, role } = user // Destructure USER object to send data to FrontEnd
-        return res.json({ token, user: { firstName, lastName, email, role } }) // Send Response to FrontEnd
+        const { _id, firstName, lastName, email, role } = user // Destructure USER object to send data to FrontEnd
+        return res.json({ token, user: { _id, firstName, lastName, email, role } }) // Send Response to FrontEnd
     })
 }
 
