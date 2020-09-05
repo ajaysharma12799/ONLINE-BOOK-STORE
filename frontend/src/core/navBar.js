@@ -16,12 +16,20 @@ const navBar = () => {
             <li className="nav-item ">
                 <Link className="nav-link text-white font-weight-bold" to='/cart'> Cart </Link>    
             </li>
-            <li className="nav-item ">
-                <Link className="nav-link text-white font-weight-bold" to='/user/dashboard'> User-Dashboard </Link>    
-            </li>
-            <li className="nav-item ">
-                <Link className="nav-link text-white font-weight-bold" to='/admin/dashboard'> Admin-Dashboard </Link>    
-            </li>
+            {
+                isAuthenticated() && isAuthenticated().user.role === 0 && (
+                    <li className="nav-item ">
+                        <Link className="nav-link text-white font-weight-bold" to='/user/dashboard'> User-Dashboard </Link>    
+                    </li>
+                )
+            }
+            {
+                isAuthenticated() && isAuthenticated().user.role === 1 && (
+                    <li className="nav-item ">
+                        <Link className="nav-link text-white font-weight-bold" to='/admin/dashboard'> Admin-Dashboard </Link>    
+                    </li>
+                )
+            }            
             {
                 !isAuthenticated() && (
                     <Fragment>
