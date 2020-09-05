@@ -37,9 +37,9 @@ const userSchema = new mongoose.Schema({
     },
     salt: String,
     role: {
-        type: String,
+        type: Number,
         trim: true,
-        default: "normal"
+        default: 0
     },
     purchase: {
         type: Array,

@@ -43,8 +43,8 @@ exports.signin = (req, res) => {
 
         console.log(` Send Response to Frontend : ${user.firstName} + ${user.lastName} + ${user.email} `);
 
-        const { firstName, lastName, email } = user // Destructure USER object to send data to FrontEnd
-        return res.json({ token, user: { firstName, lastName, email } }) // Send Response to FrontEnd
+        const { firstName, lastName, email, role } = user // Destructure USER object to send data to FrontEnd
+        return res.json({ token, user: { firstName, lastName, email, role } }) // Send Response to FrontEnd
     })
 }
 
@@ -73,7 +73,7 @@ exports.isAuthenticated = (req, res, next) => { // Auth Middleware for Checking 
 }
 
 exports.isAdmin = (req, res, next) => { // Auth Middleware for Checking Whether Registered User is Admin or Not
-    if(req.profile.role === "normal") {
+    if(req.profile.role === 0) {
         res.status(403).json({ error: 'Access Denied You are Not Admin' })
     }
     next();
