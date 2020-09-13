@@ -2,7 +2,6 @@ const Product = require('../models/product');
 const formidable = require('formidable');
 const _ = require('lodash');
 const fs = require('fs');
-const product = require('../models/product');
 
 exports.getProductByID = (req, res, next, id) => {
     Product.findById(id).exec( (error, product) => {
@@ -50,7 +49,7 @@ exports.createProduct = (req, res) => {
 }
 
 exports.getProduct = (req, res) => {
-    res.product.photo = undefined; /* 
+    req.product.photo = undefined; /* 
         NOTE:- We undefined photo because when we will get single product then response will be heavy because of binary-data
         so will create new middleware for serving photo
 
@@ -116,7 +115,7 @@ exports.getProducts = (req, res) => { // Function to get all Products
     Product.find()
     .populate('category')
     .select('-photo')
-    .sort([sortBy, 'asc'])
+    .sort([[sortBy, 'asc']])
     .limit(limit)
     .exec( (error, products) => {
         if(error) {
