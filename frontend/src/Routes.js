@@ -13,7 +13,7 @@ import ManageCategories from './admin/ManageCategories';
 import AddProduct from './admin/AddProduct';
 import ManageProducts from './admin/ManageProducts';
 import Orders from './admin/Orders';
-import Cart from './user/Cart';
+import Cart from './core/Cart';
 import UpdateProduct from './admin/UpdateProduct';
 
 const Routes = () => {

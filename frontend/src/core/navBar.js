@@ -47,7 +47,7 @@ const navBar = () => {
                     <li className="nav-item ">
                         <Link className="nav-link text-white font-weight-bold" to='/signout' onClick={ () => {
                             SignoutFrontEnd( () => {
-                                console.log('User Signout Successfully');
+                                window.location.replace('/'); // To Redirect To HomePage After Signout
                             } )
                         } }> 
                             Signout 
